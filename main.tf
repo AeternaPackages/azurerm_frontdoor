@@ -5,7 +5,7 @@ locals {
     for k1, v1 in var.frontdoors : {
       for k2, v2 in coalesce(v1.frontdoor_rules_engines, {}) :
       "${k1}/${k2}" => merge(v2, {
-        frontdoor_name = module.frontdoors.frontdoors["${k1}"].name
+        frontdoor_name = module.frontdoors.frontdoors_name["${k1}"]
       })
     }
   ]...)
