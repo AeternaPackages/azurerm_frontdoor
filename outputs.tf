@@ -1,4 +1,9 @@
 # --- azurerm_frontdoor ---
+output "frontdoors_id" {
+  description = "Map of id values across all frontdoors, keyed the same as var.frontdoors"
+  value       = module.frontdoors.frontdoors_id
+}
+
 output "frontdoors_backend_pool" {
   description = "Map of backend_pool values across all frontdoors, keyed the same as var.frontdoors"
   value       = module.frontdoors.frontdoors_backend_pool
@@ -95,6 +100,11 @@ output "frontdoors_tags" {
 }
 
 # --- azurerm_frontdoor_rules_engine ---
+output "frontdoor_rules_engines_id" {
+  description = "Map of id values across all frontdoor_rules_engines, keyed the same as var.frontdoor_rules_engines"
+  value       = module.frontdoor_rules_engines.frontdoor_rules_engines_id
+}
+
 output "frontdoor_rules_engines_enabled" {
   description = "Map of enabled values across all frontdoor_rules_engines, keyed the same as var.frontdoor_rules_engines"
   value       = module.frontdoor_rules_engines.frontdoor_rules_engines_enabled
