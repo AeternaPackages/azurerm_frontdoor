@@ -29,7 +29,7 @@ EOT
     friendly_name         = optional(string)
     load_balancer_enabled = optional(bool) # Default: true
     tags                  = optional(map(string))
-    backend_pool = object({
+    backend_pool = list(object({
       backend = list(object({
         address     = string
         enabled     = optional(bool) # Default: true
@@ -42,7 +42,7 @@ EOT
       health_probe_name   = string
       load_balancing_name = string
       name                = string
-    })
+    }))
     backend_pool_health_probe = list(object({
       enabled             = optional(bool)   # Default: true
       interval_in_seconds = optional(number) # Default: 120
@@ -89,10 +89,10 @@ EOT
         redirect_type       = string
       }))
     }))
-    backend_pool_settings = optional(object({
+    backend_pool_settings = optional(list(object({
       backend_pools_send_receive_timeout_seconds   = optional(number) # Default: 60
       enforce_backend_pools_certificate_name_check = bool
-    }))
+    })))
     frontdoor_rules_engines = optional(map(object({
       name                = string
       resource_group_name = string
