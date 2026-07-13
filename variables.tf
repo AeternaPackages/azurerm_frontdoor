@@ -27,55 +27,55 @@ EOT
     name                  = string
     resource_group_name   = string
     friendly_name         = optional(string)
-    load_balancer_enabled = optional(bool) # Default: true
+    load_balancer_enabled = optional(bool)
     tags                  = optional(map(string))
     backend_pool = list(object({
       backend = list(object({
         address     = string
-        enabled     = optional(bool) # Default: true
+        enabled     = optional(bool)
         host_header = string
         http_port   = number
         https_port  = number
-        priority    = optional(number) # Default: 1
-        weight      = optional(number) # Default: 50
+        priority    = optional(number)
+        weight      = optional(number)
       }))
       health_probe_name   = string
       load_balancing_name = string
       name                = string
     }))
     backend_pool_health_probe = list(object({
-      enabled             = optional(bool)   # Default: true
-      interval_in_seconds = optional(number) # Default: 120
+      enabled             = optional(bool)
+      interval_in_seconds = optional(number)
       name                = string
-      path                = optional(string) # Default: "/"
-      probe_method        = optional(string) # Default: "GET"
-      protocol            = optional(string) # Default: "Http"
+      path                = optional(string)
+      probe_method        = optional(string)
+      protocol            = optional(string)
     }))
     backend_pool_load_balancing = list(object({
-      additional_latency_milliseconds = optional(number) # Default: 0
+      additional_latency_milliseconds = optional(number)
       name                            = string
-      sample_size                     = optional(number) # Default: 4
-      successful_samples_required     = optional(number) # Default: 2
+      sample_size                     = optional(number)
+      successful_samples_required     = optional(number)
     }))
     frontend_endpoint = list(object({
       host_name                               = string
       name                                    = string
-      session_affinity_enabled                = optional(bool)   # Default: false
-      session_affinity_ttl_seconds            = optional(number) # Default: 0
+      session_affinity_enabled                = optional(bool)
+      session_affinity_ttl_seconds            = optional(number)
       web_application_firewall_policy_link_id = optional(string)
     }))
     routing_rule = list(object({
       accepted_protocols = list(string)
-      enabled            = optional(bool) # Default: true
+      enabled            = optional(bool)
       forwarding_configuration = optional(object({
         backend_pool_name                     = string
         cache_duration                        = optional(string)
-        cache_enabled                         = optional(bool)   # Default: false
-        cache_query_parameter_strip_directive = optional(string) # Default: "StripAll"
+        cache_enabled                         = optional(bool)
+        cache_query_parameter_strip_directive = optional(string)
         cache_query_parameters                = optional(list(string))
-        cache_use_dynamic_compression         = optional(bool) # Default: false
+        cache_use_dynamic_compression         = optional(bool)
         custom_forwarding_path                = optional(string)
-        forwarding_protocol                   = optional(string) # Default: "HttpsOnly"
+        forwarding_protocol                   = optional(string)
       }))
       frontend_endpoints = list(string)
       name               = string
@@ -90,13 +90,13 @@ EOT
       }))
     }))
     backend_pool_settings = optional(list(object({
-      backend_pools_send_receive_timeout_seconds   = optional(number) # Default: 60
+      backend_pools_send_receive_timeout_seconds   = optional(number)
       enforce_backend_pools_certificate_name_check = bool
     })))
     frontdoor_rules_engines = optional(map(object({
       name                = string
       resource_group_name = string
-      enabled             = optional(bool) # Default: true
+      enabled             = optional(bool)
       rule = optional(list(object({
         action = optional(object({
           request_header = optional(list(object({
@@ -111,7 +111,7 @@ EOT
           })))
         }))
         match_condition = optional(list(object({
-          negate_condition = optional(bool) # Default: false
+          negate_condition = optional(bool)
           operator         = string
           selector         = optional(string)
           transform        = optional(list(string))
