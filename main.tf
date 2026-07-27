@@ -12,12 +12,12 @@ locals {
 }
 
 module "frontdoors" {
-  source     = "git::https://github.com/AeternaModules/azurerm_frontdoor.git?ref=v4.80.0"
+  source     = "git::https://github.com/AeternaModules/azurerm_frontdoor.git?ref=v4.81.0"
   frontdoors = local.frontdoors
 }
 
 module "frontdoor_rules_engines" {
-  source                  = "git::https://github.com/AeternaModules/azurerm_frontdoor_rules_engine.git?ref=v4.80.0"
+  source                  = "git::https://github.com/AeternaModules/azurerm_frontdoor_rules_engine.git?ref=v4.81.0"
   frontdoor_rules_engines = local.frontdoor_rules_engines
   depends_on              = [module.frontdoors]
 }
